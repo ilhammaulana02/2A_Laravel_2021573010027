@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,7 +55,7 @@ Route::get('/stok_barang/{jenis?}/{merek?}',function($a='smartphone',$b='samsung
 
 // 6. Route Parameter dengan Regular Expression
 Route::get('/user/{id}',function($id){
-    return "Tampilkan user dengan $id";
+    return "Tampilkan user dengan id = $id";
 });
 
 Route::get('/user/{id}',function($id){
@@ -129,5 +130,52 @@ Route::get('/mahasiswa/andi',function(){
 });
 
 /* 11.Melihat Daftar Route
-    Bisa buka terminal di VSCode(pilih menu Terminal -> New Terminal), Lalu jalankan perintah php artisan route::list dari jendela terminal di sisi bawah.
+    Bisa buka terminal di VSCode(pilih menu Terminal -> New Terminal), Lalu jalankan perintah php artisan 
+    route::list dari jendela terminal di sisi bawah.
 */
+
+
+/*Membuat View
+Langkah-langkah untuk membuat view adalah:
+*/
+
+// 1. Buat route pada halaman web.php yang akan mengembalikan view
+Route::get('/home',function(){
+    return view('halaman_home');
+});
+
+Route::get('/mahasiswa',function(){
+    return view('mahasiswa');
+});
+
+Route::get('/mahasiswa',function(){
+    return view('kampus.mahasiswa');
+});
+
+Route::get('/mahasiswa',function(){
+    return view('kampus/mahasiswa');
+});
+
+Route::get('/mahasiswa',function(){
+    $arrMahasiswa = [
+    "mahasiswa01"=>"Indra Kenz",
+    "mahasiswa02"=>"Doni Salmanan",
+    "mahasiswa01"=>"Ulfi Rizkia",
+    "mahasiswa01"=>"Deliana Putri"
+    ];
+    return view('kampus.mahasiswa',$arrMahasiswa);
+});
+
+Route::get('/mahasiswa',function(){
+    $arrMahasiswa = ["Doni Sadikin","Syadzwina Sahara","Deliana Putri","Indra Kenz"];
+    return view('kampus.mahasiswa',['mahasiswa'=>$arrMahasiswa]);
+});
+
+Route::get('/mahasiswa',function(){
+    return view('kampus.mahasiswa')->with('mahasiswa01','Risa Lestari');
+});
+
+Route::get('/mahasiswa',function(){
+    $arrMahasiswa = ["Doni Sadikin","Syadzwina Sahara","Deliana Putri","Indra Kenz"];
+    return view('kampus.mahasiswa')->with('mahasiswa',$arrMahasiswa);
+});
