@@ -244,4 +244,22 @@ Langkah-langkah untuk membuat view adalah:
 //     return view('mahasiswa',compact('nama','nilai'));
 // });
 
+Route::get('mahasiswa',function(){
+    $arrMahasiswa = ["Luhut Panjaitan","Jokowi","Vladimir Putin","Lisa Permata"];
+    return view('mahasiswa')->with('mahasiswa',$arrMahasiswa);
+});
+
+Route::get('dosen',function(){
+    $arrDosen = ["Maya Fitrianti, M.M.","Prof. Silvia Nst, M.Farm.","Dr.Umar Agustinus","Dr. Syahrial, M.Kom."];
+    return view('dosen')->with('dosen',$arrDosen);
+});
+
+Route::get('gallery', function(){
+    return view('gallery');
+});
+
+Route::get('admin', function(){
+    return view('admin');
+});
+
 ?>
