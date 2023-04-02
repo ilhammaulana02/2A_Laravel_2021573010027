@@ -2,6 +2,10 @@
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PageController;
+
+Route::get('/', [PageController::class,'index']);
+Route::get('/mahasiswa', [PageController::class,'tampil']);
 
 /*
 |--------------------------------------------------------------------------
@@ -15,19 +19,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 // 1. Route Bawaan Laravel
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-// 2. Membuat Route
-Route::get('/hello',function(){
-    return 'Hello World';
-});
+// // 2. Membuat Route
+// Route::get('/hello',function(){
+//     return 'Hello World';
+// });
 
-Route::get('/belajar',function(){
-    echo '<h1>Hello World</h1>';
-    echo '<p>Sedang belajar Laravel</p>';
-});
+// Route::get('/belajar',function(){
+//     echo '<h1>Hello World</h1>';
+//     echo '<p>Sedang belajar Laravel</p>';
+// });
 
 // Route::get('/mahasiswa/profil/coba',function(){
 //     echo '<h2 style="text-align: center"><u>Welcome Profil Coba</u></h2>';
@@ -244,22 +248,26 @@ Langkah-langkah untuk membuat view adalah:
 //     return view('mahasiswa',compact('nama','nilai'));
 // });
 
-Route::get('mahasiswa',function(){
-    $arrMahasiswa = ["Luhut Panjaitan","Jokowi","Vladimir Putin","Lisa Permata"];
-    return view('mahasiswa')->with('mahasiswa',$arrMahasiswa);
-});
+// Route::get('mahasiswa',function(){
+//     $arrMahasiswa = ["Luhut Panjaitan","Jokowi","Vladimir Putin","Lisa Permata"];
+//     return view('mahasiswa')->with('mahasiswa',$arrMahasiswa);
+// });
 
-Route::get('dosen',function(){
-    $arrDosen = ["Maya Fitrianti, M.M.","Prof. Silvia Nst, M.Farm.","Dr.Umar Agustinus","Dr. Syahrial, M.Kom."];
-    return view('dosen')->with('dosen',$arrDosen);
-});
+// Route::get('dosen',function(){
+//     $arrDosen = ["Maya Fitrianti, M.M.","Prof. Silvia Nst, M.Farm.","Dr.Umar Agustinus","Dr. Syahrial, M.Kom."];
+//     return view('dosen')->with('dosen',$arrDosen);
+// });
 
-Route::get('gallery', function(){
-    return view('gallery');
-});
+// Route::get('gallery', function(){
+//     return view('gallery');
+// });
 
-Route::get('admin', function(){
-    return view('admin');
-});
+// Route::get('admin', function(){
+//     return view('admin');
+// });
+
+Route::get('/coba-facade',[PageController::class,'cobaFacade']);
+
+Route::get('/coba-class',[PageController::class,'cobaClass']);
 
 ?>
